@@ -5,7 +5,7 @@
 #   include drobo_dashboard
 class drobo_dashboard {
   package { 'DroboDashboard':
-    provider => 'pkgdmg',
+    provider => 'appdmg',
     source   => 'http://www.drobo.com/start/download/dashboard/Drobo-Dashboard-installer-2.5.2.dmg',
   }
 }
