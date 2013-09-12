@@ -11,7 +11,14 @@ class drobo_dashboard {
   }
 
   exec {'run the installer':
-    command   => '/usr/bin/open /Applications/Install.app',
-    require   => Package['DroboDashboard']
+    command => '/usr/bin/open /Applications/Install.app',
+    require => Package['DroboDashboard'],
+    onlyif  => 'test ! /Applications/Drobo\ Dashboard.app'
+  }
+
+  exec {'remove the (un)installer':
+    command => '/bin/rm -rf /Applications/Install.app /Applications/Uninstall.app',
+    require => Package['DroboDashboard'],
+    onlyif  => 'test /Applications/Drobo\ Dashboard.app'
   }
 }
