@@ -18,7 +18,11 @@ class drobo_dashboard {
 
   exec {'remove the (un)installer':
     command => '/bin/rm -rf /Applications/Install.app /Applications/Uninstall.app',
-    require => Package['DroboDashboard'],
-    onlyif  => 'test /Applications/Drobo\ Dashboard.app'
+    require => [
+                Package['DroboDashboard'],
+                File['/Applications/Install.app'],
+                File['/Applications/Uninstall.app'],
+                File['/Applications/Drobo\ Dashboard.app']
+                ]
   }
 }
