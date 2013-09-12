@@ -12,7 +12,6 @@ class drobo_dashboard {
 
   exec {'run the installer':
     command   => '/usr/bin/open /Applications/Install.app',
-    subscribe => File['/Applications/Install.app'],
     require   => Package['DroboDashboard']
   }
 }
